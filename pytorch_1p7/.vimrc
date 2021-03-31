@@ -23,7 +23,6 @@ endif
 set ttimeoutlen=10 "airline mode change display update speed depends on this variable. increase on bad connectivity
 
 " features
-source $VIMRUNTIME/defaults.vim
 set noswapfile
 set nowritebackup
 set nobackup
@@ -45,3 +44,4 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprevious<CR>
 nnoremap <silent> <F2> :set paste!<CR>
+nnoremap <F8> :YcmCompleter GoTo<CR>

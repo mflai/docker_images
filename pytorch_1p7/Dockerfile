@@ -46,10 +46,17 @@ RUN mkdir -p /home/anavision/examples/torchvision_finetuning_instance_segmentati
     cp references/detection/engine.py ../ &&\
     cp references/detection/coco_utils.py ../ &&\
     cd ..
-
 COPY ./examples/main.py /home/anavision/examples/torchvision_finetuning_instance_segmentation 
+
+#Install other dependencies (toxic_algae)
+RUN ["/bin/bash", "-c", "source activate pytorch_anavision && pip install -U scikit-image"]
+RUN ["/bin/bash", "-c", "source activate pytorch_anavision && pip install PyYAML"]
     
-#install my stuff
-COPY --chown=anavision  ./.vimrc /home/anavision
+#Setup Vim
 RUN git clone https://github.com/VundleVim/Vundle.vim.git /home/anavision/.vim/bundle/Vundle.vim
+COPY --chown=anavision  ./.vimrc_plugin_install /home/anavision
+RUN vim -u .vimrc_plugin_install +PluginInstall +qall
+RUN rm ./.vimrc_plugin_install
+COPY --chown=anavision  ./.vimrc /home/anavision
+RUN vim +PluginInstall +qall
 
