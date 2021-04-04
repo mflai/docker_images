@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -23,6 +24,7 @@ endif
 set ttimeoutlen=10 "airline mode change display update speed depends on this variable. increase on bad connectivity
 
 " features
+source $VIMRUNTIME/defaults.vim
 set noswapfile
 set nowritebackup
 set nobackup
@@ -33,6 +35,7 @@ set hlsearch
 set incsearch
 set breakindent
 set textwidth=9999999
+set encoding=utf-8
 syntax on
 
 " mappings
@@ -44,4 +47,5 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprevious<CR>
 nnoremap <silent> <F2> :set paste!<CR>
+nnoremap <F7> "syiw:let @/ = @s<CR>:set hlsearch<CR>
 nnoremap <F8> :YcmCompleter GoTo<CR>
